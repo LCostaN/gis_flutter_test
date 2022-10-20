@@ -1,0 +1,31 @@
+{
+  "appTitle": "Teste Flutter G.I.S.",
+  "@appTitle": {
+    "description": "Título da aplicação"
+  },
+  "createAccount": "Criar Conta",
+  "darkTheme": "Tema Escuro",
+  "dontHaveAccount": "Não tem conta?",
+  "email": "E-mail",
+  "explore": "Explorar",
+  "forgotPassword": "Esqueceu a senha?",
+  "fridayShort": "Sex",
+  "goals": "Metas",
+  "home": "Início",
+  "language": "Língua",
+  "lightTheme": "Tema Claro",
+  "login": "Entrar",
+  "mondayShort": "Seg",
+  "options": "Opções",
+  "password": "Senha",
+  "profile": "Perfil",
+  "progress": "Progresso",
+  "required": "Obrigatório",
+  "saturdayShort": "Sab",
+  "settings": "Configurações",
+  "sundayShort": "Dom",
+  "theme": "Tema",
+  "thursdayShort": "Qui",
+  "tuesdayShort": "Ter",
+  "wednesdayShort": "Qua"
+}

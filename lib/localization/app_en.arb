@@ -1,0 +1,31 @@
+{
+  "appTitle": "G.I.S. Flutter Test",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "createAccount": "Create Account",
+  "darkTheme": "Dark Theme",
+  "dontHaveAccount": "Don't have an Account?",
+  "email": "E-mail",
+  "explore": "Explore",
+  "forgotPassword": "Forgot Password?",
+  "fridayShort": "Fri",
+  "goals": "Goals",
+  "home": "Home",
+  "language": "Language",
+  "lightTheme": "Light Theme",
+  "login": "Log In",
+  "mondayShort": "Mon",
+  "options": "Options",
+  "password": "Password",
+  "profile": "Profile",
+  "progress": "Progress",
+  "required": "Required",
+  "saturdayShort": "Sat",
+  "settings": "Settings",
+  "sundayShort": "Sun",
+  "theme": "Theme",
+  "thursdayShort": "Thu",
+  "tuesdayShort": "Tue",
+  "wednesdayShort": "Wed"
+}
