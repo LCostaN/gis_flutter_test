@@ -27,6 +27,11 @@ flutter_icons:
   image_path: "assets/icons/logo_gis.png"
   min_sdk_android: 21
   remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/icons/logo_gis.png"
+    background_color: "#fff"
+    theme_color: "#fff"
 
 flutter:
   uses-material-design: true

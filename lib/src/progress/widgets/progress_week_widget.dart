@@ -22,33 +22,39 @@ class _ProgressWeekWidgetState extends State<ProgressWeekWidget> {
       AppLocalizations.of(context)!.saturdayShort,
       AppLocalizations.of(context)!.sundayShort,
     ];
-    return Row(
-      children: days.map((e) {
-        double fillHeight = Random().nextDouble();
-        return Expanded(
-          child: Column(
-            children: [
-              Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) => Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: constraints.constrainHeight() * fillHeight,
-                      width: 8,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).dividerColor,
-                        borderRadius: BorderRadius.circular(8),
+
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints.loose(const Size.fromWidth(400)),
+        child: Row(
+          children: days.map((e) {
+            double fillHeight = Random().nextDouble();
+            return Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) => Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: constraints.constrainHeight() * fillHeight,
+                          width: 8,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).dividerColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  const SizedBox(height: 24),
+                  Text(e),
+                ],
               ),
-              const SizedBox(height: 24),
-              Text(e),
-            ],
-          ),
-        );
-      }).toList(),
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }

@@ -14,26 +14,25 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          PopupMenuButton<int>(
-            icon: const Icon(Icons.more_horiz),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 1,
-                child: Text(AppLocalizations.of(context)!.options),
-              ),
-            ],
-          ),
-        ],
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) => SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(48.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: PopupMenuButton<int>(
+                    icon: const Icon(Icons.more_horiz),
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        value: 1,
+                        child: Text(AppLocalizations.of(context)!.options),
+                      ),
+                    ],
+                  ),
+                ),
                 Center(
                   child: ConstrainedBox(
                     constraints: BoxConstraints.loose(const Size.square(128)),
@@ -62,43 +61,53 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 60),
-                TextFormField(
-                  maxLines: 1,
-                  keyboardType: TextInputType.emailAddress,
-                  style: const TextStyle(height: 1.6),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    labelText: AppLocalizations.of(context)!.email,
+                Center(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.loose(const Size.fromWidth(600)),
+                    child: TextFormField(
+                      maxLines: 1,
+                      keyboardType: TextInputType.emailAddress,
+                      style: const TextStyle(height: 1.6),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.zero,
+                        labelText: AppLocalizations.of(context)!.email,
+                      ),
+                      validator: (value) => (value ?? "").isEmpty
+                          ? AppLocalizations.of(context)!.required
+                          : null,
+                    ),
                   ),
-                  validator: (value) => (value ?? "").isEmpty
-                      ? AppLocalizations.of(context)!.required
-                      : null,
                 ),
                 const SizedBox(height: 16),
                 ValueListenableBuilder<bool>(
                   valueListenable: obscure,
-                  builder: (context, obscureText, _) => TextFormField(
-                    obscureText: obscureText,
-                    maxLines: 1,
-                    keyboardType: TextInputType.visiblePassword,
-                    style: TextStyle(
-                      height: 1.6,
-                      letterSpacing: obscureText ? 2.0 : null,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.zero,
-                      labelText: AppLocalizations.of(context)!.password,
-                      labelStyle: const TextStyle(letterSpacing: 0),
-                      suffixIcon: IconButton(
-                        onPressed: () => obscure.value = !obscure.value,
-                        icon: Icon(
-                          obscureText ? Icons.visibility : Icons.visibility_off,
+                  builder: (context, obscureText, _) => Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints.loose(const Size.fromWidth(600)),
+                      child: TextFormField(
+                        obscureText: obscureText,
+                        maxLines: 1,
+                        keyboardType: TextInputType.visiblePassword,
+                        style: TextStyle(
+                          height: 1.6,
+                          letterSpacing: obscureText ? 2.0 : null,
                         ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.zero,
+                          labelText: AppLocalizations.of(context)!.password,
+                          labelStyle: const TextStyle(letterSpacing: 0),
+                          suffixIcon: IconButton(
+                            onPressed: () => obscure.value = !obscure.value,
+                            icon: Icon(
+                              obscureText ? Icons.visibility : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
+                        validator: (value) => (value ?? "").isEmpty
+                            ? AppLocalizations.of(context)!.required
+                            : null,
                       ),
                     ),
-                    validator: (value) => (value ?? "").isEmpty
-                        ? AppLocalizations.of(context)!.required
-                        : null,
                   ),
                 ),
                 const SizedBox(height: 8),

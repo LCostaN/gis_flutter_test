@@ -45,21 +45,30 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
-        body: GridView.builder(
-          restorationId: 'homeListView',
-          padding: const EdgeInsets.all(16),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 0.9,
+        body: LayoutBuilder(
+          builder: (context, constraints) => GridView.builder(
+            restorationId: 'homeListView',
+            padding: const EdgeInsets.all(16),
+            gridDelegate: constraints.constrainWidth() > 720
+                ? const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 300,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 0.9,
+                  )
+                : const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 0.9,
+                  ),
+            itemCount: controller.items.length,
+            itemBuilder: (BuildContext context, int index) {
+              final item = controller.items[index];
+        
+              return HomeItemWidget(item: item);
+            },
           ),
-          itemCount: controller.items.length,
-          itemBuilder: (BuildContext context, int index) {
-            final item = controller.items[index];
-
-            return HomeItemWidget(item: item);
-          },
         ),
         bottomNavigationBar: Hero(
           tag: 'bottomnav',
@@ -74,8 +83,8 @@ class HomeView extends StatelessWidget {
               currentIndex: controller.index,
               backgroundColor: Colors.transparent,
               onTap: (value) {
-                if (controller.index == value ) return;
-        
+                if (controller.index == value) return;
+
                 controller.updateSelectedIndex(value);
               },
               items: controller.navItems
@@ -83,7 +92,8 @@ class HomeView extends StatelessWidget {
                     (e) => BottomNavigationBarItem(
                       icon: Icon(e.icon),
                       label: e.label,
-                      backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+                      backgroundColor:
+                          Theme.of(context).bottomNavigationBarTheme.backgroundColor,
                     ),
                   )
                   .toList(),
